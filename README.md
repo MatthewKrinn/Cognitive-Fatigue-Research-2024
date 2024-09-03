@@ -1,5 +1,9 @@
 # This repository conducts Exploratory Data Analysis with the FatigueSet Dataset
 
+## Disclaimer:
+
+This repository was cloned with explicit permission from Booz Allen Hamilton in August 2024. It does not contain any client or secure data.
+
 ## Background
 
 #### FatigueSet: A Multi-model Dataset for Modeling Mental Fatigue and Fatiguability
@@ -14,13 +18,13 @@ The original objective of this repository was to use the FatigueSet dataset to t
 
 1. Navigate to the folder you would like the repository to be cloned into. Then, clone the repository and then navigate into it.
     ```
-    git clone https://github.boozallencsn.com/Krinn-Matthew/cognitive-fatigue.git
-    cd cognitive-fatigue
+    git clone https://github.com/MatthewKrinn/Cognitive-Fatigue-Research-2024.git
+    cd Cognitive-Fatigue-Research-2024
     ```
     After cloning, your file structure should be the following:
     
     ```
-    cognitive-fatigue/
+    Cognitive-Fatigue-Research-2024/
     |    
     ├── archive/
     |   ├── eeg.ipynb
@@ -37,7 +41,7 @@ The original objective of this repository was to use the FatigueSet dataset to t
     ├── .gitignore
     ```
 
-2. Download the compressed [FatigueSet dataset](https://esense.io/datasets/fatigueset/). Unzip the downloaded `fatigueset.zip` and move the unzipped `fatigueset` folder into the `data` directory in the repository (`cognitive-fatigue/data`). Make sure that the unzipped folder is named `fatigueset`.
+2. Download the compressed [FatigueSet dataset](https://esense.io/datasets/fatigueset/). Unzip the downloaded `fatigueset.zip` and move the unzipped `fatigueset` folder into the `data` directory in the repository (`Cognitive-Fatigue-Research-2024/data`). Make sure that the unzipped folder is named `fatigueset`.
 
     Note: `fatigueset` contains the whole 13 hours of features for each person, but we are not analyzing all of that data. Because of this, a later step will spawn folders named `fatigueset_hrv_data` and `fatigueset_eeg_data`, depending on the type of data you want to analyze (which notebook you use).
 
@@ -58,7 +62,7 @@ The original objective of this repository was to use the FatigueSet dataset to t
 
     One of the first cells in each notebook defines functions to grab data from `fatigueset` and organize it into a different folder. You can make changes to the `mapping` dictionary in each function to grab different csvs from `fatigueset`. Each *key* is the name of the csv in a person / session's data folder in `fatigueset`, and the associated *value* is the prefix assigned to each column in the csv. Prefixing is required as many columns across different csvs have the same column names (ex. Duration).
     
-    Another cell in each notebook spawns in the relevant data. Simply run the cell and the `fatigueset_{notebook_name}_data` folder will be produced in `cognitive-fatigue/data`. Note that the initialization function does a multitude of different things, including:
+    Another cell in each notebook spawns in the relevant data. Simply run the cell and the `fatigueset_{notebook_name}_data` folder will be produced in `Cognitive-Fatigue-Research-2024/data`. Note that the initialization function does a multitude of different things, including:
     - Renames each person's sessions folders in `fatigueset` from integers to `low`, `medium`, and `high` based on the mapping provided by `fatiguset/metadata.csv`.
     - Renames duplicate named events in each person and session's `exp_markers.csv` to avoid errors down the line (ex. Renames multiple `start_nback` to `start_nback_1`, `start_nback_2`, ...).
     - Fills in NaN values in `exp_markers.csv`. Sometimes, there is not a timestamp with an associated event (ex. person 1, session low does not have a `start_nback_3` timestamp). To fix this, NaNs were replaced with the timestamp of the event prior with an additional 10 seconds to ensure the monotonicity of the dataframe.
@@ -68,7 +72,7 @@ The original objective of this repository was to use the FatigueSet dataset to t
     After running the initialization function `initialize_aggregated_data()`, the structure of `data` should now be the following:
 
      ```
-    cognitive-fatigue/
+    Cognitive-Fatigue-Research-2024/
     |
     ├── data/
     |   ├── fatiguset
@@ -132,6 +136,4 @@ The preliminary findings of the Fatiguset paper were verified, but the lack of r
 
 # Acknowledgments:
 
-FatigueSet: A Multi-modal Dataset for Modeling Mental Fatigue and Fatigability      
-Manasa Kalanadhabhatta, Chulhong Min, Alessandro Montanari and Fahim Kawsar    
-In 15th International Conference on Pervasive Computing Technologies for Healthcare (Pervasive Health), December 6–8, 2021
+FatigueSet: A Multi-modal Dataset for Modeling Mental Fatigue and Fatigability. Manasa Kalanadhabhatta, Chulhong Min, Alessandro Montanari and Fahim Kawsar. In 15th International Conference on Pervasive Computing Technologies for Healthcare (Pervasive Health), December 6–8, 2021
