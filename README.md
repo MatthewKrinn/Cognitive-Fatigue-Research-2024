@@ -4,7 +4,7 @@
 
 This repository was cloned with explicit permission from Booz Allen Hamilton in August 2024. It does not contain any client or secure data.
 
-## Background
+## Background:
 
 #### FatigueSet: A Multi-model Dataset for Modeling Mental Fatigue and Fatiguability
 
